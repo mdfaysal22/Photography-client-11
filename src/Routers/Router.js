@@ -1,4 +1,5 @@
 import { createBrowserRouter } from "react-router-dom";
+import Gallery from "../Components/Pages/Gallery/Gallery";
 import Home from "../Components/Pages/Home/Home";
 import Service from "../Components/Pages/Services/Service/Service";
 import Services from "../Components/Pages/Services/Services";
@@ -44,6 +45,10 @@ export const router = createBrowserRouter([
             {
                 path:"/services/:id",
                 element:<Service></Service>
+            },
+            {
+                path:'/gallery',
+                element:<Gallery></Gallery>
             }
         ]
     }

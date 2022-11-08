@@ -28,7 +28,7 @@ const Services = () => {
                 </div>
             </div>
 
-            <div>
+            <div className='grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-x-4 md:gap-x-6 gap-y-8'>
                 {
                     services.map(service => <ServiceItem key={service._id} service={service}></ServiceItem> )
                 }
