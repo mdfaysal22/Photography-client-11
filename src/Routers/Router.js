@@ -1,6 +1,8 @@
 import { createBrowserRouter } from "react-router-dom";
+import Error from "../Components/Pages/Error/Error";
 import Gallery from "../Components/Pages/Gallery/Gallery";
 import Home from "../Components/Pages/Home/Home";
+import AddService from "../Components/Pages/Services/AddService/AddService";
 import Service from "../Components/Pages/Services/Service/Service";
 import Services from "../Components/Pages/Services/Services";
 import Login from "../Components/UserInfo/Login/Login";
@@ -49,6 +51,14 @@ export const router = createBrowserRouter([
             {
                 path:'/gallery',
                 element:<Gallery></Gallery>
+            },
+            {
+                path:'/add-service',
+                element:<AddService></AddService>
+            },
+            {
+                path:'*',
+                element:<Error></Error>
             }
         ]
     }

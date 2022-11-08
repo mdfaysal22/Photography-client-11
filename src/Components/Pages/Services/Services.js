@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 import ServiceItem from './ServiceItem/ServiceItem';
 import './Services.css'
 
@@ -23,9 +24,9 @@ const Services = () => {
                 <div>
                     <h2 className='text-xl font-semibold'>Ours Services</h2>
                 </div>
-                <div>
+                <Link to={"/add-service"}>
                     <button className='btn btn-outline text-white border-black bg-black hover:bg-white hover:text-black border-2 rounded-none btn-sm '>Add Service</button>
-                </div>
+                </Link>
             </div>
 
             <div className='grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-x-4 md:gap-x-6 gap-y-8'>
