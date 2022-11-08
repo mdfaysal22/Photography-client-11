@@ -5,9 +5,6 @@ module.exports = {
   ],
   theme: {
     extend: {
-      animation: {
-        'spin-slow': 'spin 3s linear 5s',
-      }
     },
   },
   plugins: [require("daisyui")],

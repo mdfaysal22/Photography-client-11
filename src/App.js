@@ -5,9 +5,11 @@ import { router } from "./Routers/Router";
 
 function App() {
   return (
-    <RouterProvider router={router}>
+    <div className="max-w-screen-lg	mx-auto">
+      <RouterProvider router={router}>
       
-    </RouterProvider>
+      </RouterProvider>
+    </div>
   );
 }
 

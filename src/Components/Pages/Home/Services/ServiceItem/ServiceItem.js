@@ -3,7 +3,7 @@ import React from "react";
 const ServiceItem = ({service}) => {
     console.log(service);
   return (
-    <div className="animate-pulse">
+    <div>
       <a
         href="#"
         class="group h-96 block bg-gray-100 rounded-t-lg overflow-hidden relative"
