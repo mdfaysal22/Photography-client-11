@@ -21,7 +21,7 @@ const Header = () => {
           </a>
           <div className="md:hidden">
             <button
-              className="text-gray-700 outline-none p-2 rounded-md focus:border-gray-400 focus:border"
+              className="text-gray-700 outline-none p-2  focus:border-gray-400 focus:border"
               onClick={() => setState(!state)}
             >
               {state ? (
@@ -73,7 +73,7 @@ const Header = () => {
             <div className="block md:hidden ">
               <a
                 href="/"
-                className="py-3 px-4 text-white bg-indigo-600 hover:bg-indigo-700 rounded-md shadow"
+                className="py-3 px-4 text-white border-2 border-black transition duration-500 bg-black hover:bg-white hover:text-black  shadow"
               >
                 Create an Account
               </a>
@@ -83,7 +83,7 @@ const Header = () => {
         <div className="hidden md:inline-block">
           <a
             href="/"
-            className="py-3 px-4 text-white bg-indigo-600 hover:bg-indigo-700 rounded-md shadow"
+            className="py-3 px-4 text-white border-2 border-black transition duration-500 bg-black hover:bg-white hover:text-black  shadow"
           >
             Create an Account
           </a>
