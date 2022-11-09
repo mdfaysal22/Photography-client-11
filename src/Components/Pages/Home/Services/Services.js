@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from "react";
-import ServiceItem from "./ServiceItem/ServiceItem";
+import { Link } from "react-router-dom";
+import ServiceItem from "../../Services/ServiceItem/ServiceItem";
+
 
 const Services = () => {
   const [services, setServices] = useState([]);
   useEffect(() => {
-    fetch("services.json")
+    fetch("http://localhost:5000/services")
       .then((res) => res.json())
       .then((data) => setServices(data));
   }, []);
@@ -19,14 +21,16 @@ const Services = () => {
         </h3>
       </div>
       <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
-        {services.slice(0, 3).map((service) => (
-          <ServiceItem key={service._id} service={service}></ServiceItem>
-        ))}
+      
+        {services.slice(0, 3).map(service => <ServiceItem key={service._id} service={service}></ServiceItem>
+        )}
       </div>
       <div className="text-center my-5">
-        <button className="btn btn-outline rounded-none border-2">
-          All Service
-        </button>
+        <Link to={'/services'}>
+          <button className="btn btn-outline rounded-none border-2">
+            All Service
+          </button>
+        </Link>
       </div>
     </div>
   );

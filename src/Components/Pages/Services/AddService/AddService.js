@@ -1,100 +1,138 @@
-import React from "react";
+import React, {  useState } from "react";
+import toast, { Toaster } from "react-hot-toast";
 
 const AddService = () => {
+  const [service, setService] = useState({})
+
+  const handleAddService = (e) => {
+    e.preventDefault()
+    const form = e.target;
+    fetch('http://localhost:5000/services', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(service),
+    })
+      .then(res => res.json())
+      .then(data => {
+        if(data.acknowledged){
+          toast("Service Add Successfully")
+          form.reset()
+        }
+        console.log(data);
+      })
+
+
+  }
+  const handleOnBlur = (e) => {
+    e.preventDefault()
+    const field = e.target.name;
+    const value = e.target.value;
+    const newService = { ...service }
+    newService[field] = value;
+    setService(newService);
+  }
+ 
   return (
     <div>
-      <div class="bg-white py-6 sm:py-8 lg:py-12">
-        <div class="max-w-screen-2xl px-4 md:px-8 mx-auto">
-          <div class="mb-10 md:mb-16">
-            <h2 class="text-gray-800 text-2xl lg:text-3xl font-bold text-center mb-4 md:mb-6">
+      <div className="bg-white py-6 sm:py-8 lg:py-12">
+        <div className="max-w-screen-2xl px-4 md:px-8 mx-auto">
+          <div className="mb-10 md:mb-16">
+            <h2 className="text-gray-800 text-2xl lg:text-3xl font-bold text-center mb-4 md:mb-6">
               Add Brand New Service
             </h2>
           </div>
-          <form class="max-w-screen-md grid sm:grid-cols-2 gap-4 mx-auto">
-            <div class="sm:col-span-2">
+          <form onSubmit={handleAddService} className="max-w-screen-md grid sm:grid-cols-2 gap-4 mx-auto">
+            <div className="sm:col-span-2">
               <label
-                for="company"
-                class="inline-block text-gray-800 text-sm sm:text-base mb-2"
+                htmlFor="title"
+                className="inline-block text-gray-800 text-sm sm:text-base mb-2"
               >
                 Title of Service*
               </label>
               <input
+                onBlur={handleOnBlur}
                 type="text"
-                name="company"
+                name="title"
+                required
                 placeholder="Title"
-                class="w-full bg-gray-50 text-gray-800 border focus:ring ring-gray-500 rounded-none outline-none transition duration-100 px-3 py-2"
+                className="w-full bg-gray-50 text-gray-800 border focus:ring ring-gray-500 rounded-none outline-none transition duration-100 px-3 py-2"
               />
             </div>
 
-            <div class="sm:col-span-2">
+            <div className="sm:col-span-2">
               <label
-                for="uri"
-                class="inline-block text-gray-800 text-sm sm:text-base mb-2"
+                htmlFor="photoURL"
+                className="inline-block text-gray-800 text-sm sm:text-base mb-2"
               >
                 Service Image URI
               </label>
               <input
-                name="uri"
+                onBlur={handleOnBlur}
+                name="photoURL"
                 type="text"
+                required
                 placeholder="Service URI"
-                class="w-full bg-gray-50 text-gray-800 border focus:ring ring-gray-500 rounded-none outline-none transition duration-100 px-3 py-2"
+                className="w-full bg-gray-50 text-gray-800 border focus:ring ring-gray-500 rounded-none outline-none transition duration-100 px-3 py-2"
               />
             </div>
 
-            <div class="sm:col-span-2">
+
+            <div className="sm:col-span-2">
               <label
-                for="uri"
-                class="inline-block text-gray-800 text-sm sm:text-base mb-2"
+                htmlFor="price"
+                className="inline-block text-gray-800 text-sm sm:text-base mb-2"
               >
-                Features
+                Booking Price
               </label>
-              <div className="relative">
               <input
-                name="uri"
-                type="text"
-                placeholder="Add More Features"
-                class="w-full bg-gray-50 text-gray-800 border focus:ring ring-gray-500 rounded-none outline-none transition duration-100 px-3 py-2"
+                onBlur={handleOnBlur}
+                name="price"
+                type="number"
+                required
+                placeholder="Booking Price"
+                className="w-full bg-gray-50 text-gray-800 border focus:ring ring-gray-500 rounded-none outline-none transition duration-100 px-3 py-2"
               />
-
-              <div className="absolute top-1/2 -translate-y-1/2  right-2">
-                <button className="btn btn-outline btn-xs border-none text-gray-400 hover:bg-gray-500 hover:text-white rounded-none">Add Features</button>
-              </div>
-              </div>
             </div>
 
-            <div class="sm:col-span-2">
+
+            <div className="sm:col-span-2">
               <label
-                for="about"
-                class="inline-block text-gray-800 text-sm sm:text-base mb-2"
+                htmlFor="about"
+                required
+                className="inline-block text-gray-800 text-sm sm:text-base mb-2"
               >
                 About
               </label>
               <textarea
                 name="about"
+                onBlur={handleOnBlur}
                 placeholder="Write about Your Service (minimum 100 word)"
-                class="w-full h-64 bg-gray-50 text-gray-800 border focus:ring ring-gray-500 rounded-none outline-none transition duration-100 px-3 py-2"
+                className="w-full h-64 bg-gray-50 text-gray-800 border focus:ring ring-gray-500 rounded-none outline-none transition duration-100 px-3 py-2"
               ></textarea>
             </div>
 
-            <div class="sm:col-span-2 flex justify-between items-center">
-              <button class="inline-block bg-black text-light border-2 border-black hover:text-black hover:bg-white focus-visible:ring ring-gray-500 text-white text-sm md:text-base font-semibold text-center rounded-none outline-none transition duration-100 px-8 py-3">
+            <div className="sm:col-span-2 flex justify-between items-center">
+              <button type="submit" className="inline-block bg-black text-light border-2 border-black hover:text-black hover:bg-white focus-visible:ring ring-gray-500 text-white text-sm md:text-base font-semibold text-center rounded-none outline-none transition duration-100 px-8 py-3">
                 Save Service
               </button>
 
-              <span class="text-gray-500 text-sm">*Required</span>
+              <span className="text-gray-500 text-sm">*Required</span>
             </div>
 
-            <p class="text-gray-400 text-xs">
+            <p className="text-gray-400 text-xs">
               By signing up to our newsletter you agree to our{" "}
               <a
                 href="/"
-                class="hover:text-indigo-500 active:text-indigo-600 underline transition duration-100"
+                className="hover:text-indigo-500 active:text-indigo-600 underline transition duration-100"
               >
                 Privacy Policy
               </a>
               .
             </p>
           </form>
+          <Toaster></Toaster>
         </div>
       </div>
     </div>
