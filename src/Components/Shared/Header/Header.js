@@ -1,24 +1,26 @@
-import React, { useState } from "react";
-import logo from './../../../Assets/logo.png'
+import React, { useContext, useState } from "react";
+import { AiOutlineCamera } from "react-icons/ai";
+import { Link } from "react-router-dom";
+import { UserAuth } from "../../../Contexts/AuthContext";
+import demophoto from "../../../Assets/user.png";
 const Header = () => {
+  const { user, loading } = useContext(UserAuth)
   const [state, setState] = useState(false);
   const navigation = [
-    { title: "Home", path: "/" },
+    { title: "Home", path: "/home" },
     { title: "Services", path: "/services" },
     { title: "Gallery", path: "/gallery" },
   ];
   return (
     <nav className="bg-white w-full border-b md:border-0 md:static">
-      <div className="items-center px-4 max-w-screen-xl mx-auto md:flex md:px-8">
+      <div className="items-center px-4 md:px-0 max-w-screen-xl mx-auto md:flex ">
         <div className="flex items-center justify-between py-3 md:py-5 md:block">
-          <a href="/">
-            <img
-              src={logo}
-              width={80}
-              height={60}
-              alt="Float UI logo"
-            />
-          </a>
+
+          <Link to={'/'} class="inline-flex border-2 border-black  items-center text-black-800 md:text-xl font-bold gap-2" aria-label="logo">
+            <AiOutlineCamera></AiOutlineCamera>
+            Photo <span className="bg-black p-1 text-white">Graphy</span>
+          </Link>
+
           <div className="md:hidden">
             <button
               className="text-gray-700 outline-none p-2  focus:border-gray-400 focus:border"
@@ -57,36 +59,57 @@ const Header = () => {
           </div>
         </div>
         <div
-          className={`flex-1 justify-self-center pb-3 mt-8 md:block md:pb-0 md:mt-0 ${
-            state ? "block" : "hidden"
-          }`}
+          className={`flex-1 justify-self-center pb-3 mt-8 md:block md:pb-0 md:mt-0 ${state ? "block" : "hidden"
+            }`}
         >
           <ul className="justify-center items-center space-y-8 md:flex md:space-x-6 md:space-y-0">
             {navigation.map((item, idx) => {
               return (
                 <li key={idx} className="text-gray-600 hover:text-indigo-600">
-                  <a href={item.path}>{item.title}</a>
+                  <Link to={item.path}>{item.title}</Link>
                 </li>
               );
             })}
 
             <div className="block md:hidden ">
-              <a
-                href="/"
-                className="py-3 px-4 text-white border-2 border-black transition duration-500 bg-black hover:bg-white hover:text-black  shadow"
-              >
-                Create an Account
-              </a>
+              {
+                user?.uid ? <Link to={"/user"}>
+                <div className="avatar online placeholder">
+                  <div className="bg-neutral-focus text-neutral-content rounded-full w-12">
+                    
+                      <img src={user?.photoURL ? user?.photoURL : demophoto } alt="" /> 
+                    
+                  </div>
+                </div>
+                </Link> : <Link
+                  to="/signup"
+                  className="py-3 px-4 text-white border-2 border-black transition duration-500 bg-black hover:bg-white hover:text-black  shadow"
+                >
+                  Create an Account
+                </Link>
+              }
+
+
             </div>
           </ul>
         </div>
         <div className="hidden md:inline-block">
-          <a
-            href="/"
-            className="py-3 px-4 text-white border-2 border-black transition duration-500 bg-black hover:bg-white hover:text-black  shadow"
-          >
-            Create an Account
-          </a>
+
+          {
+            user?.uid ? <Link to={"/user"}>
+            <div className="avatar online placeholder">
+              <div className="bg-neutral-focus text-neutral-content rounded-full w-12">
+              <img src={user?.photoURL ? user?.photoURL : demophoto } alt="" /> 
+              </div>
+            </div>
+            </Link> : <Link
+              to="/signup"
+              className="py-3 px-4 text-white border-2 border-black transition duration-500 bg-black hover:bg-white hover:text-black  shadow"
+            >
+              Create an Account
+            </Link>
+          }
+
         </div>
       </div>
     </nav>

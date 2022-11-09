@@ -1,24 +1,36 @@
-import React from "react";
-import user from "./../../../Assets/user.png";
+import React, { useContext } from "react";
+import demoUserPhoto from "./../../../Assets/user.png";
 import { AiFillStar, AiOutlineStar } from "react-icons/ai";
+import { UserAuth } from "../../../Contexts/AuthContext";
+import { Link, useNavigate } from "react-router-dom";
 
 const User = () => {
+  const {user, logout, loading} = useContext(UserAuth)
+  const navigate = useNavigate()
+  const handleLogOut = () => {
+    logout()
+    .then(result => console.log(result))
+    .catch(err => console.log(err))
+    navigate('/')
+  }
   return (
     <div className="text-center hero">
       <div className="hero-content">
         <div>
           <div className="avatar online placeholder">
             <div className="bg-neutral-focus text-neutral-content rounded-full w-24">
-              <img src={user} alt="" />
+              {
+                loading ? <h1>Loading</h1> : <img src={user?.photoURL ? user?.photoURL : demoUserPhoto} alt="" /> 
+              }
             </div>
           </div>
           <div className="my-2 ">
-            <h1 className="text-2xl font-semibold">User Name</h1>
-            <h2 className="text-sm text-slate-500">Web Designer</h2>
-            <h3>exmple@gmail.com</h3>
+            <h1 className="text-2xl font-semibold">{user?.displayName ? user?.displayName : <span>User Name</span>}</h1>
+            <h3>{user?.email ? user?.email : <span>Example@gmail.com</span>}</h3>
           </div>
-            <div className="my-5">
-                <button className="btn btn-sm btn-outline border-2 border-black rounded-none">Logout</button>
+            <div className="my-5 flex gap-3 justify-center">
+                <button onClick={handleLogOut} className="btn btn-sm btn-outline border-2 border-black rounded-none">Logout</button>
+                <Link to={"/update-user"}><button className="btn btn-sm btn-outline border-2 border-black rounded-none">Update Profile</button></Link>
             </div>
           <div className="text-left">
             <h2 className="bg-slate-200 p-5 font-semibold text-2xl ">Recent Review</h2>

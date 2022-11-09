@@ -1,49 +1,53 @@
-import React from "react";
+import React, { useContext } from "react";
+import { useNavigate } from "react-router-dom";
+import { UserAuth } from "../../../Contexts/AuthContext";
 
 const UpdateUser = () => {
+  const { user, updateUser, loading,setLoading } = useContext(UserAuth);
+  const navigate = useNavigate()
+  const handleUpdateUser = (e) => {
+    e.preventDefault()
+    const form = e.target;
+    const userName = form.name.value;
+    const photo = form.photo.value;
+    updateUser(userName, photo)
+      .then(() => { })
+      .catch(() => { })
+      navigate("/user")
+      form.reset()
+  }
   return (
-    <div class="bg-white py-6 sm:py-8 lg:py-12">
-      <div class="max-w-screen-2xl px-4 md:px-8 mx-auto">
-        <div class="mb-10 md:mb-16">
-          <h2 class="text-gray-800 text-2xl lg:text-3xl font-bold text-center mb-4 md:mb-6">
-            Update User 
-          </h2>
+    <div className="bg-white py-6 sm:py-8 lg:py-12">
+      <div className="max-w-screen-2xl px-4 md:px-8 mx-auto">
+        <div className="mb-10 md:mb-16">
+          {
+            (loading) ? <h1>Loading</h1> : <h2 className="text-gray-800 text-2xl lg:text-3xl font-bold text-center mb-4 md:mb-6">
+              Update to {user?.displayName ? user?.displayName : <span>Null User</span>}
+            </h2>
+          }
         </div>
-        <form class="w-2/3 mx-auto">
+        <form onSubmit={handleUpdateUser} className="w-2/3 mx-auto">
           <div className="mt-5">
             <label
-              for="name"
-              class="inline-block text-gray-800 text-sm sm:text-base mb-2"
+              htmlFor="name"
+              className="inline-block text-gray-800 text-sm sm:text-base mb-2"
             >
               Full name
             </label>
             <input
               name="name"
               type="text"
-              placeholder="User"
-              class="w-full bg-gray-50 text-gray-800 border focus:ring ring-indigo-300 rounded outline-none transition duration-100 px-3 py-2"
-            />
-          </div>
-          <div className="mt-5">
-            <label
-              for="title"
-              class="inline-block text-gray-800 text-sm sm:text-base mb-2"
-            >
-              Title
-            </label>
-            <input
-              name="title"
-              type="text"
-              placeholder="Title (web Designer)"
-              class="w-full bg-gray-50 text-gray-800 border focus:ring ring-indigo-300 rounded outline-none transition duration-100 px-3 py-2"
+              placeholder={user?.displayName ? user?.displayName : "Please Set User Name"}
+              className="w-full bg-gray-50 text-gray-800 border focus:ring ring-indigo-300 rounded outline-none transition duration-100 px-3 py-2"
             />
           </div>
 
 
+
           <div className="mt-5">
             <label
-              for="email"
-              class="inline-block text-gray-800 text-sm sm:text-base mb-2"
+              htmlFor="email"
+              className="inline-block text-gray-800 text-sm sm:text-base mb-2"
             >
               Email <span className="text-red-500">*</span>
             </label>
@@ -51,31 +55,15 @@ const UpdateUser = () => {
               name="email"
               type="email"
               readOnly
-              placeholder="user@gmail.com"
-              class="w-full bg-gray-50 text-gray-800 border focus:ring ring-indigo-300 rounded outline-none transition duration-100 px-3 py-2"
-            />
-          </div>
-
-
-          <div className="mt-5">
-            <label
-              for="password"
-              class="inline-block text-gray-800 text-sm sm:text-base mb-2"
-            >
-              Password
-            </label>
-            <input
-              name="password"
-              type="password"
-              placeholder="password"
-              class="w-full bg-gray-50 text-gray-800 border focus:ring ring-indigo-300 rounded outline-none transition duration-100 px-3 py-2"
+              placeholder={user?.email}
+              className="w-full bg-gray-50 text-gray-800 border focus:ring ring-indigo-300 rounded outline-none transition duration-100 px-3 py-2"
             />
           </div>
 
           <div className="my-5">
             <label
-              for="photo"
-              class="inline-block text-gray-800 text-sm sm:text-base mb-2"
+              htmlFor="photo"
+              className="inline-block text-gray-800 text-sm sm:text-base mb-2"
             >
               Profile Picture
             </label>
@@ -83,25 +71,25 @@ const UpdateUser = () => {
               name="photo"
               type="text"
               placeholder="photo uri (http://www.userphoto.png)"
-              class="w-full bg-gray-50 text-gray-800 border focus:ring ring-indigo-300 rounded outline-none transition duration-100 px-3 py-2"
+              className="w-full bg-gray-50 text-gray-800 border focus:ring ring-indigo-300 rounded outline-none transition duration-100 px-3 py-2"
             />
           </div>
 
-          
 
-          <div class="sm:col-span-2 flex justify-between mb-5 items-center">
-            <button class="inline-block bg-black hover:bg-white hover:text-black border-2 border-black focus-visible:ring ring-indigo-300 text-white text-sm md:text-base font-semibold text-center  outline-none transition duration-100 px-8 py-3">
+
+          <div className="sm:col-span-2 flex justify-between mb-5 items-center">
+            <button type="submit" className="inline-block bg-black hover:bg-white hover:text-black border-2 border-black focus-visible:ring ring-indigo-300 text-white text-sm md:text-base font-semibold text-center  outline-none transition duration-100 px-8 py-3">
               Update
             </button>
 
-            <span class="text-gray-500 text-sm"><span className="text-red-500">*</span> Don't Change</span>
+            <span className="text-gray-500 text-sm"><span className="text-red-500">*</span> Don't Change</span>
           </div>
 
-          <p class="text-gray-400 text-xs">
+          <p className="text-gray-400 text-xs">
             By signing up to our newsletter you agree to our{" "}
             <a
               href="/"
-              class="hover:text-indigo-500 active:text-indigo-600 underline transition duration-100"
+              className="hover:text-indigo-500 active:text-indigo-600 underline transition duration-100"
             >
               Privacy Policy
             </a>

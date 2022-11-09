@@ -10,6 +10,7 @@ import Signup from "../Components/UserInfo/Signup/Signup";
 import UpdateUser from "../Components/UserInfo/Update/UpdateUser";
 import User from "../Components/UserInfo/User/User";
 import Main from "./Main/Main";
+import PrivateRouter from "./PrivateRouter";
 
 export const router = createBrowserRouter([
     {
