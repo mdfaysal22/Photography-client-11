@@ -10,6 +10,7 @@ const Header = () => {
     { title: "Home", path: "/home" },
     { title: "Services", path: "/services" },
     { title: "Gallery", path: "/gallery" },
+    { title: "Blog", path: "/blog" },
   ];
   return (
     <nav className="bg-white w-full border-b md:border-0 md:static">
