@@ -4,6 +4,8 @@ import toast, { Toaster } from "react-hot-toast";
 const AddService = () => {
   const [service, setService] = useState({})
 
+  
+
   const handleAddService = (e) => {
     e.preventDefault()
     const form = e.target;
@@ -31,6 +33,7 @@ const AddService = () => {
     const value = e.target.value;
     const newService = { ...service }
     newService[field] = value;
+    console.log(newService);
     setService(newService);
   }
  
@@ -63,14 +66,14 @@ const AddService = () => {
 
             <div className="sm:col-span-2">
               <label
-                htmlFor="photoURL"
+                htmlFor="ServicePhotoURL"
                 className="inline-block text-gray-800 text-sm sm:text-base mb-2"
               >
                 Service Image URI
               </label>
               <input
                 onBlur={handleOnBlur}
-                name="photoURL"
+                name="ServicePhotoURL"
                 type="text"
                 required
                 placeholder="Service URI"
