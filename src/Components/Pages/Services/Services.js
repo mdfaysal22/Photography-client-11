@@ -35,7 +35,7 @@ const Services = () => {
                         <button className='btn btn-outline text-white border-black bg-black hover:bg-white hover:text-black border-2 rounded-none btn-sm '>Add Service</button>
                     </Link>
                         :
-                        <Link to={'/login'}><button className='btn btn-outline text-white border-black bg-black hover:bg-white hover:text-black border-2 rounded-none btn-sm '>Please Login</button></Link>
+                        <Link to={'/login'}><button className='btn btn-outline text-white border-black bg-black hover:bg-white hover:text-black border-2 rounded-none btn-sm '>Please Login and Add Service</button></Link>
 
                 }
             </div>
