@@ -1,4 +1,5 @@
 import React from 'react';
+import useTitle from '../../../Hooks/useTitle';
 import About from './About/About';
 import Banner from './Banner/Banner';
 import CompanyLogo from './CompanyLogo/CompanyLogo';
@@ -8,6 +9,7 @@ import SLider from './Slider/SLider';
 import Teams from './Teams/Teams';
 
 const Home = () => {
+    useTitle("Home")
     return (
         <div>
             <SLider></SLider>

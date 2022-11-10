@@ -3,9 +3,11 @@ import demoUserPhoto from "./../../../Assets/user.png";
 import { AiFillStar, AiOutlineStar } from "react-icons/ai";
 import { UserAuth } from "../../../Contexts/AuthContext";
 import { Link, useNavigate } from "react-router-dom";
+import useTitle from "../../../Hooks/useTitle";
 
 const User = () => {
   const {user, logout, loading} = useContext(UserAuth)
+  useTitle(`${user?.displayName}`)
   const navigate = useNavigate()
   const handleLogOut = () => {
     logout()

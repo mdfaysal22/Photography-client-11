@@ -5,8 +5,10 @@ import { UserAuth } from "../../../../Contexts/AuthContext";
 import toast, { Toaster } from "react-hot-toast";
 import ReviewItem from "../../../Shared/ReviewItem/ReviewItem";
 import { PhotoProvider, PhotoView } from "react-photo-view";
+import useTitle from "../../../../Hooks/useTitle";
 
 const Service = () => {
+  useTitle("Service")
   const { title, ServicePhotoURL, _id, about, price } = useLoaderData();
   const { user } = useContext(UserAuth);
   // const { email, displayName, photoURL } = user;

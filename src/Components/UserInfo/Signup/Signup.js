@@ -2,8 +2,10 @@ import React, { useContext } from 'react';
 import { FcGoogle } from 'react-icons/fc'
 import { Link, useNavigate } from 'react-router-dom';
 import { UserAuth } from '../../../Contexts/AuthContext';
+import useTitle from '../../../Hooks/useTitle';
 
 const Signup = () => {
+  useTitle("Create Account")
   const {signUpInfo, updateUser,signUpGoogle } = useContext(UserAuth);
   const navigate = useNavigate()
   const handleEmailSignUp = (event) => {

@@ -1,8 +1,10 @@
 import React, { useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import { UserAuth } from "../../../Contexts/AuthContext";
+import useTitle from "../../../Hooks/useTitle";
 
 const UpdateUser = () => {
+  useTitle("Update User")
   const { user, updateUser, loading,setLoading } = useContext(UserAuth);
   const navigate = useNavigate()
   const handleUpdateUser = (e) => {

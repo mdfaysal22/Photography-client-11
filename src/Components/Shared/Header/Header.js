@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import { UserAuth } from "../../../Contexts/AuthContext";
 import demophoto from "../../../Assets/user.png";
 const Header = () => {
-  const { user, loading } = useContext(UserAuth)
+  const { user } = useContext(UserAuth)
   const [state, setState] = useState(false);
   const navigation = [
     { title: "Home", path: "/home" },

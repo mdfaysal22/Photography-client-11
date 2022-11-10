@@ -10,6 +10,9 @@ const Services = () => {
       .then((res) => res.json())
       .then((data) => setServices(data));
   }, []);
+
+
+  
   return (
     <div>
       <div className="text-center mt-10 mb-5">
