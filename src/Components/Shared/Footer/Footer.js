@@ -53,7 +53,7 @@ const Footer = () => {
 
       <div className="bg-gray-100">
         <div className="max-w-screen-2xl px-4 md:px-8 mx-auto">
-          <div className="flex justify-between items-center gap-4 py-8">
+          <div className="flex flex-col md:flex-row justify-between items-center gap-4 py-8">
             <span className="text-gray-400 text-sm"> © 2022 - Present Md Faysal. All rights reserved. </span>
 
             <div className="flex gap-4">

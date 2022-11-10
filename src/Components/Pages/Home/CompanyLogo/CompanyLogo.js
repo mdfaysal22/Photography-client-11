@@ -10,7 +10,7 @@ const CompanyLogo = () => {
             Trusted by the best
           </h2>
 
-          <div className="sm:h-40 grid grid-cols-2 text-3xl md:grid-cols-4 sm:content-evenly bg-black rounded-none gap-6 p-6">
+          <div className="md:h-40 grid grid-cols-1 text-xl md:text-3xl md:grid-cols-2 lg:grid-cols-4 sm:content-evenly bg-black rounded-none gap-6 p-6">
             <div className="flex justify-center gap-3  items-center text-white">
               <h1>Apple</h1>
               <FaApple></FaApple>

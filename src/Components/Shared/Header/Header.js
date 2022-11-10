@@ -14,7 +14,7 @@ const Header = () => {
   ];
   return (
     <nav className="bg-white w-full border-b md:border-0 md:static">
-      <div className="items-center px-4 md:px-0 max-w-screen-xl mx-auto md:flex ">
+      <div className="items-center px-4 md:px-2 max-w-screen-xl mx-auto md:flex ">
         <div className="flex items-center justify-between py-3 md:py-5 md:block">
 
           <Link to={'/'} class="inline-flex border-2 border-black  items-center text-black-800 md:text-xl font-bold gap-2" aria-label="logo">
