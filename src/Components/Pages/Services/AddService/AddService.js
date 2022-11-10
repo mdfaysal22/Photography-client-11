@@ -9,7 +9,7 @@ const AddService = () => {
   const handleAddService = (e) => {
     e.preventDefault()
     const form = e.target;
-    fetch('http://localhost:5000/services', {
+    fetch('https://photo-server-peach.vercel.app/services', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

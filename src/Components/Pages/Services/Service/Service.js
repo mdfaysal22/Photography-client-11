@@ -38,7 +38,7 @@ const Service = () => {
     // console.log(review);
     // Send Data from server -- 
 
-    fetch('http://localhost:5000/reviews', {
+    fetch('https://photo-server-peach.vercel.app/reviews', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -58,7 +58,7 @@ const Service = () => {
   }
 
   useEffect(() => {
-    fetch(`http://localhost:5000/reviews/${_id}`)
+    fetch(`https://photo-server-peach.vercel.app/reviews/${_id}`)
       .then(res => res.json())
       .then(data => setAllReview(data))
   }, [_id])

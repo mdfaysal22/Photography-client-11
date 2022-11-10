@@ -5,7 +5,7 @@ import useTitle from "../../../Hooks/useTitle";
 
 const UpdateUser = () => {
   useTitle("Update User")
-  const { user, updateUser, loading,setLoading } = useContext(UserAuth);
+  const { user, updateUser, loading} = useContext(UserAuth);
   const navigate = useNavigate()
   const handleUpdateUser = (e) => {
     e.preventDefault()
