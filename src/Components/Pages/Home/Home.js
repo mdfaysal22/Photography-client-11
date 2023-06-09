@@ -7,11 +7,17 @@ import CompanyLogo from './CompanyLogo/CompanyLogo';
 import Review from './Review/Review';
 import Services from './Services/Services';
 import Teams from './Teams/Teams';
+import AddedService from './Added Service/AddedService';
+import Short from './Short/Short';
+import ServiceUs from './ServiceUs/ServiceUs';
+import GetInTouch from './GetInTouch/GetInTouch';
 
 const Home = () => {
     useTitle("Home")
     return (
         <div>
+            <AddedService/>
+            <Short/>
             <div className="bg-white py-6 sm:py-8 lg:py-12">
                 <div className="max-w-screen-2xl px-4 md:px-8 mx-auto">
                     <div className="md:h-80 flex flex-col sm:flex-row bg-gray-200 overflow-hidden">
@@ -49,8 +55,10 @@ const Home = () => {
             <Services></Services>
             <About></About>
             <Banner></Banner>
+            <ServiceUs/>
             <Review></Review>
             <Teams></Teams>
+            <GetInTouch/>
             <CompanyLogo></CompanyLogo>
         </div>
     );
